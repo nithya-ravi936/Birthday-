@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Happy Birthday Nithya 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="adwaitlogo.jpg" type="image/jpg">
+</head>
+
+<body>
+    <!-- 🎵 Background music -->
+    <audio id="bg-music" preload="metadata"></audio>
+
+  <script>
+  const music = document.getElementById("bg-music");
+
+  // 🎵 Playlist of songs
+  const playlist = [
+    "songs/1.ni-sa.mp3",
+    "songs/2.leelai-oru-kili-oru-kili.mp3",
+    "songs/3.sanam-teri-kasam-title-song.mp3",
+    "songs/4.maamannan-nenjame.mp3",
+    "songs/4.Dude.mp3",
+    "songs/5.pothavillaye.mp3",
+    "songs/6.kunguma-chimil-nilavu.mp3",
+    "songs/7.endhan-nenjil-neengadha.mp3",
+    "songs/8.pookul pookum.mp3",
+    "songs/14.Nenjin-ezhuth.mp3",
+    "songs/15.Sathiyama.mp3",
+    "songs/9.kangal-irandal-cover.mp3",
+    "songs/10.muzhumadhi.mp3",
+    "songs/11.Ennavendru Solvathamma.mp3",
+    "songs/12.Kadhalikka neramillaya  Only Voice.mp3",
+    "songs/13.ennai-thedi-kadhal-90s.mp3"
+  ];
+
+  let lastSong = null;
+
+  // Pick random song (avoid immediate repeat)
+  function getRandomSong() {
+    let index;
+    do {
+      index = Math.floor(Math.random() * playlist.length);
+    } while (playlist[index] === lastSong);
+    lastSong = playlist[index];
+    return lastSong;
+  }
+
+  // Play one random song
+  function playRandomSong() {
+    music.src = getRandomSong();
+    music.play().catch(err => {
+      console.log("Playback blocked:", err);
+    });
+  }
+
+  // ✅ Start music only if not already playing
+  function startMusicIfNotPlaying() {
+    if (music.paused) {
+      playRandomSong();
+    }
+  }
+
+  // Next song when one ends
+  music.addEventListener("ended", playRandomSong);
+
+  // Try autoplay on desktop (might work)
+  window.addEventListener("load", () => {
+    playRandomSong();
+  });
+
+  // ✅ Allow only real user gestures (but won't restart if already playing)
+  document.querySelector(".cta-button")?.addEventListener("click", startMusicIfNotPlaying, { once: true });
+  document.body.addEventListener("click", startMusicIfNotPlaying, { once: true });
+  document.addEventListener("keydown", startMusicIfNotPlaying, { once: true });
+
+  // Typewriter effect
+  document.addEventListener("DOMContentLoaded", () => {
+    const typewriter = document.querySelector(".typewriter");
+    if (typewriter) {
+      const textLength = typewriter.textContent.length;
+      const duration = textLength * 0.15;
+      typewriter.style.animation = `typing ${duration}s steps(${textLength}, end) forwards, blink 0.7s infinite`;
+    }
+  });
+</script>
+
+  
+    <!-- Floating Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="typewriter" id="typewriter">Happy Birthday, Nithya !! 💕</h1>
+            <p class="subtitle fade-in">Today is all about celebrating you and the joy that you bring to life.</p>
+            <div class="floating-hearts">
+                <div class="heart">❤️</div>
+                <div class="heart">💖</div>
+                <div class="heart">💕</div>
+                <div class="heart">💗</div>
+                <div class="heart">❤️</div>
+            </div>
+            <button class="cta-button" onclick="scrollToSection('gallery')">
+                Start the Celebration 🎉
+            </button>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Beautiful Moments</h2>
+            <div class="gallery-grid">
+                <div class="photo-card" data-aos="fade-up" data-delay="100">
+                    <div class="photo-container">
+                        <img src="images/1.PNG" alt="Beautiful moment">
+                        <div class="photo-overlay">
+                            <div class="photo-caption">Every moment with you is magical</div>
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <span class="heart-icon">🤍</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-aos="fade-up" data-delay="200">
+                    <div class="photo-container">
+                        <img src="images/2.PNG" alt="Sweet memory">
+                        <div class="photo-overlay">
+                            <div class="photo-caption">Your smile lights up my world</div>
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <span class="heart-icon">🤍</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-aos="fade-up" data-delay="300">
+                    <div class="photo-container">
+                        <img src="images/3.JPG" alt="Happy times">
+                        <div class="photo-overlay">
+                            <div class="photo-caption">Adventures together</div>
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <span class="heart-icon">🤍</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-aos="fade-up" data-delay="400">
+                    <div class="photo-container">
+                        <img src="images/4.PNG" alt="Love moment">
+                        <div class="photo-overlay">
+                            <div class="photo-caption">My heart belongs to you</div>
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <span class="heart-icon">🤍</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-aos="fade-up" data-delay="500">
+                    <div class="photo-container">
+                        <img src="images/5.PNG" alt="Beautiful day">
+                        <div class="photo-overlay">
+                            <div class="photo-caption">Creating memories together</div>
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <span class="heart-icon">🤍</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-aos="fade-up" data-delay="600">
+                    <div class="photo-container">
+                        <img src="images/6.PNG" alt="Romantic moment">
+                        <div class="photo-overlay">
+                            <div class="photo-caption">Forever and always</div>
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <span class="heart-icon">🤍</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Birthday Message Section -->
+    <section class="message-section" id="message">
+        <div class="container">
+            <div class="message-card">
+                <h2 class="message-title">A Special Message for You</h2>
+                <div class="message-content">
+                    <p class="message-text fade-in-text">
+                        On this special day, I want you to know how grateful I am to have met you in my life.
+                        I remember the first time we started talking. You were the reason I got my laugh back.
+                        The reason I fell asleep with a smile on my face. The reason I had motivation do things 
+                        again. The reason why my problems didn't seem so bad. You truly have made my life better
+                        by just being in it Nithya.
+                    </p>
+                    <p class="message-text fade-in-text">
+                        Today, the entire world celebrate you – your kindness, your beauty, your amazing spirit, and
+                        all the wonderful things that make you uniquely you. I hope this new year of your
+                        life brings you endless happiness, incredible adventures, and all your dreams come true.
+                    </p>
+                    <p class="message-signature fade-in-text">
+                        Happy Birthday, My Glucose podi ! Here's to many more years of laughter, love, and beautiful memories
+                        together. 💕
+                    </p>
+                </div>
+                <div class="message-hearts">
+                    <span class="heart-animation">💖</span>
+                    <span class="heart-animation">💕</span>
+                    <span class="heart-animation">💗</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Made with ❤️ for the most amazing person in the world...!!!</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+      };
+    </script> 
+</body>
+
+</html>
